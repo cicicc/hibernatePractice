@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!--首先配置必要属性 以hibernate.connection开头的四个属性-->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql:///hibernate</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">chenfeng980320</property>
+        <!--配置方言和hibernate提供的有助于开发的属性-->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!--是否在控制台显示SQL语句-->
+        <property name="hibernate.show_sql">true</property>
+        <!--格式化SQL语句-->
+        <property name="hibernate.format_sql">true</property>
+        <!--每次启动服务器对于表的处理方法
+            有 none update create create-drop等属性
+        -->
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <!--配置c3p0连接池-->
+        <property name="connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>
+        <!--在连接池中可用的数据库连接的最小数目-->
+        <property name="c3p0.min_size">10</property>
+        <!--在连接池中可用的数据库连接的最大数目-->
+        <property name="c3p0.max_size">30</property>
+        <!--设置数据库中连接的过期时间 如果超过指定时间没有进行数据库的访问 就会被清理出连接池-->
+        <property name="c3p0.timeout">180</property>
+        <!--每隔3000秒 检查一下数据库中的空余连接数？暂时不懂什么意思-->
+        <property name="c3p0.idle_test_period">3000</property>
+        <!--加载domain包中的pojo包所对应的配置文件 配置文件的加载一般是以/作为路径分隔符 而其余的一般是使用。作为路径分隔符-->
+        <mapping resource="com/afeng/domain/Customer.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>
