@@ -28,4 +28,26 @@ public class HibernateUtils {
         return sessionFactory.getCurrentSession();
     }
 
+    /**
+     * 开启当前线程对应session的事务
+     */
+    public static void startTransaction(){
+        getCurrentSession().beginTransaction();
+    }
+
+    /**
+     * 提交当前线程所对应的事务
+     */
+    public static void commitTransaction(){
+        getCurrentSession().getTransaction().commit();
+    }
+
+    /**
+     * 回滚当前线程所对应的事务
+     */
+    public static void rollbackTransaction(){
+        getCurrentSession().getTransaction().rollback();
+    }
+
+
 }

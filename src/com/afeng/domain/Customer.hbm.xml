@@ -19,7 +19,7 @@
           `cust_industry` varchar(50) DEFAULT NULL,
           `cust_level` varchar(20) DEFAULT NULL,
           `cust_phone` varchar(30) DEFAULT NULL,
-          `cust_modile` varchar(30) DEFAULT NULL,
+          `cust_mobile` varchar(30) DEFAULT NULL,
         -->
         <!--name属性为在pojo类中的成员变量名 而column属性为该属性在表中对应的列名
         还有length属性 如果不指定的话 那么就和字段的最大长度相同 一般不指定
@@ -30,7 +30,7 @@
         <property name="cust_industry" column="cust_industry"></property>
         <property name="cust_level" column="cust_level"></property>
         <property name="cust_phone" column="cust_phone"></property>
-        <property name="cust_modile" column="cust_modile"></property>
+        <property name="cust_mobile" column="cust_mobile"></property>
     </class>
 
 </hibernate-mapping>

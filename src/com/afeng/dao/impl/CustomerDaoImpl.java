@@ -13,10 +13,8 @@ public class CustomerDaoImpl implements CustomerDao {
         //在数据库中进行查询
         //获取session对象
         Session session = HibernateUtils.getCurrentSession();
-
-
-
-
-        return null;
+        //进行查询并且获取数据的list集合 将集合返回
+        List<Customer> customers = session.createQuery("from Customer ").list();
+        return customers;
     }
 }

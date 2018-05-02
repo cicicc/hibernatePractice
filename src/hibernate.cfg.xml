@@ -18,6 +18,8 @@
         <!--每次启动服务器对于表的处理方法
             有 none update create create-drop等属性
         -->
+        <!--全局事务-->
+        <property name="hibernate.current_session_context_class">thread</property>
         <property name="hibernate.hbm2ddl.auto">update</property>
         <!--配置c3p0连接池-->
         <property name="connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>

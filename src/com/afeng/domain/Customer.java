@@ -3,6 +3,7 @@ package com.afeng.domain;
 import java.io.Serializable;
 
 public class Customer implements Serializable {
+
     /*
     CREATE TABLE `customer` (
       `cust_id` int(64) NOT NULL AUTO_INCREMENT,
@@ -11,17 +12,18 @@ public class Customer implements Serializable {
       `cust_industry` varchar(50) DEFAULT NULL,
       `cust_level` varchar(20) DEFAULT NULL,
       `cust_phone` varchar(30) DEFAULT NULL,
-      `cust_modile` varchar(30) DEFAULT NULL,
+      `cust_mobile` varchar(30) DEFAULT NULL,
       PRIMARY KEY (`cust_id`)
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8
      */
+
     private Integer cust_id;
     private String cust_name;
     private String cust_source;
     private String cust_industry;
     private String cust_level;
     private String cust_phone;
-    private String cust_modile;
+    private String cust_mobile;
 
     public Customer() {
     }
@@ -74,12 +76,12 @@ public class Customer implements Serializable {
         this.cust_phone = cust_phone;
     }
 
-    public String getCust_modile() {
-        return cust_modile;
+    public String getCust_mobile() {
+        return cust_mobile;
     }
 
-    public void setCust_modile(String cust_modile) {
-        this.cust_modile = cust_modile;
+    public void setCust_mobile(String cust_mobile) {
+        this.cust_mobile = cust_mobile;
     }
 
     @Override
@@ -91,7 +93,7 @@ public class Customer implements Serializable {
                 ", cust_industry='" + cust_industry + '\'' +
                 ", cust_level='" + cust_level + '\'' +
                 ", cust_phone='" + cust_phone + '\'' +
-                ", cust_modile='" + cust_modile + '\'' +
+                ", cust_mobile='" + cust_mobile + '\'' +
                 '}';
     }
 }

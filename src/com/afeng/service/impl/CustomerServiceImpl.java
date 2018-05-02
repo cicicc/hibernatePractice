@@ -19,6 +19,7 @@ public class CustomerServiceImpl implements CustomerService {
         Session session = HibernateUtils.getCurrentSession();
         Transaction transaction = session.beginTransaction();
         List<Customer> list = customerDao.findAll();
+        transaction.commit();
         return list;
     }
 }

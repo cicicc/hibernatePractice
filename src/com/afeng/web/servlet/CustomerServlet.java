@@ -18,7 +18,8 @@ public class CustomerServlet extends BaseServlet {
     public String list(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //直接调用service层对象 使用service层对象中的findAll方法
        List<Customer> list =  customerService.findAll();
+        request.setAttribute("list",list);
 
-        return null;
+        return "jsp/customer/list.jsp";
     }
 }
