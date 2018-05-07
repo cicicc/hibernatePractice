@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!--    private Long role_id;
+    private String role_name;
+    private String role_memo;
+    private Set<User> users = new HashSet<>();-->
+<hibernate-mapping>
+    <class name="com.afeng.domain.Role" table="sys_role">
+        <id name="role_id" column="role_id">
+            <generator class="native"></generator>
+        </id>
+        <property name="role_name" column="role_name"></property>
+        <property name="role_memo" column="role_memo"></property>
+        <set name="users" table="sys_role_user">
+            <key column="sys_role_id"></key>
+            <many-to-many column="sys_user_id" class="com.afeng.domain.User"></many-to-many>
+        </set>
+    </class>
+
+</hibernate-mapping>

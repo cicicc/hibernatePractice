@@ -33,5 +33,8 @@
         <property name="c3p0.idle_test_period">3000</property>
         <!--加载domain包中的pojo包所对应的配置文件 配置文件的加载一般是以/作为路径分隔符 而其余的一般是使用。作为路径分隔符-->
         <mapping resource="com/afeng/domain/Customer.hbm.xml"/>
+        <mapping resource="com/afeng/domain/LinkMan.hbm.xml"/>
+        <mapping resource="com/afeng/domain/User.hbm.xml"/>
+        <mapping resource="com/afeng/domain/Role.hbm.xml"/>
     </session-factory>
 </hibernate-configuration>

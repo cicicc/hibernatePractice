@@ -1,6 +1,8 @@
 package com.afeng.domain;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Customer implements Serializable {
 
@@ -24,6 +26,8 @@ public class Customer implements Serializable {
     private String cust_level;
     private String cust_phone;
     private String cust_mobile;
+    //此处set必须创建一个子类对象 否则会报错
+    private Set<LinkMan> linkMans = new HashSet<>();
 
     public Customer() {
     }
@@ -84,6 +88,13 @@ public class Customer implements Serializable {
         this.cust_mobile = cust_mobile;
     }
 
+    public Set<LinkMan> getLinkMans() {
+        return linkMans;
+    }
+
+    public void setLinkMans(Set<LinkMan> linkMans) {
+        this.linkMans = linkMans;
+    }
     @Override
     public String toString() {
         return "Customer{" +
