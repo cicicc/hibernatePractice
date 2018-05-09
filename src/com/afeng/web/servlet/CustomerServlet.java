@@ -22,4 +22,20 @@ public class CustomerServlet extends BaseServlet {
 
         return "jsp/customer/list.jsp";
     }
+
+    public String findByUserInput(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //获取用户在输入框中输入的内容
+        String custName = request.getParameter("custName");
+        System.out.println(custName);
+        //对custName进行判断
+        if (custName != null) {
+            List<Customer> list =customerService.findByUserInput(custName);
+            //将查询所得的数据放入request域中
+            request.setAttribute("list", list);
+            //将用户输入的查询内容放入request域中,以便回写到输入框中
+            request.setAttribute("custName", custName);
+
+        }
+        return "jsp/customer/list.jsp";
+    }
 }

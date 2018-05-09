@@ -4,7 +4,8 @@ import com.afeng.domain.Customer;
 import com.afeng.utils.HibernateUtils;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
+import org.hibernate.Transaction;
+import org.hibernate.criterion.*;
 import org.junit.Test;
 
 import java.util.List;
@@ -113,5 +114,53 @@ public class practiceCriteria {
         System.out.println(result);
         //提交事务
         HibernateUtils.commitTransaction();
+    }
+
+    //Criteria排序查询
+    @Test
+    public void testCriteria7(){
+        //获取session对象
+        Session session = HibernateUtils.getCurrentSession();
+        //开启事务
+        HibernateUtils.startTransaction();
+        //进行criteria语句查询
+        Criteria criteria = session.createCriteria(Customer.class);
+        List list = criteria.addOrder(Order.asc("cust_id")).list();
+        System.out.println(list);
+
+        //提交事务
+        HibernateUtils.commitTransaction();
+    }
+    //Criteria统计查询
+    @Test
+    public void testCriteria8(){
+        //获取session对象
+        Session session = HibernateUtils.getCurrentSession();
+        //开启事务
+        HibernateUtils.startTransaction();
+        //进行criteria语句查询
+        Criteria criteria = session.createCriteria(Customer.class);
+        List list = criteria.setProjection(Projections.avg("cust_id")).list();
+        System.out.println(list);
+
+        //提交事务
+        HibernateUtils.commitTransaction();
+    }
+    //离线查询
+    @Test
+    public void testCriteria9(){
+        //创建离线查询对象
+        DetachedCriteria criteria = DetachedCriteria.forClass(Customer.class);
+        //添加查询条件
+        criteria.setProjection(Projections.count("cust_id"));
+        //获得session对象
+        Session session = HibernateUtils.getCurrentSession();
+        //开启事务
+        Transaction transaction = session.beginTransaction();
+        //将session对象与criteria对象进行绑定
+        List list = criteria.getExecutableCriteria(session).list();
+        System.out.println(list);
+        //提交事务
+        transaction.commit();
     }
 }

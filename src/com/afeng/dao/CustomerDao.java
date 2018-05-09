@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface CustomerDao {
     List<Customer> findAll();
+
+    List<Customer> findByUserInput(String custName);
 }
